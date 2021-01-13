@@ -1,0 +1,44 @@
+.selected {
+  color: goldenrod;
+}
+.nums {
+  margin: 36px 12px;
+  background: azure;
+}
+.nums span {
+  padding: 0px 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.nums span:hover {
+  border: 1px solid goldenrod;
+}
+.img {
+  width: 24px;
+  margin: 0 auto;
+  display: block;
+}
+.titles {
+  font-weight: bold;
+  cursor: pointer;
+}
+.sortby {
+  margin: 6px 0px 0px 36px;
+}
+.sortby span {
+  padding: 0px 6px;
+  border: 1px solid goldenrod;
+  font-weight: bold;
+  color: goldenrod;
+  cursor: pointer;
+}
+.control {
+  display: flex;
+  align-items: center;
+  padding: 0px 36px;
+  height: 36px;
+}
+.control input {
+  display: block;
+  margin: 6px 0px 0px 6px;
+}

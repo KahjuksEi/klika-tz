@@ -33,6 +33,12 @@ const tracksReducer = (state = initialState, action) => {
         ...state,
         value: action.value,
       };
+    case "REVERSE_DATA": {
+      let stateCopy = { ...state };
+      stateCopy.tracks = [...action.tracks];
+      stateCopy.tracks.reverse();
+      return stateCopy;
+    }
     default:
       return state;
   }
@@ -48,10 +54,13 @@ export const setTotalTracksCountAC = (totalTracksCount) => {
   return { type: "SET_TOTAL_TRACKS_COUNT", count: totalTracksCount };
 };
 export const setChangePageSizeAC = (pageSize) => {
-  return { type: "SET_PAGESIZE", pageSize };
+  return { type: "CHANGE_PAGESIZE", pageSize };
 };
 export const setFilterByValueAC = (value) => {
   return { type: "SET_FILTER_BY_VALUE", value };
+};
+export const setReverseDataAC = (tracks) => {
+  return { type: "REVERSE_DATA", tracks };
 };
 
 export default tracksReducer;

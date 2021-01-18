@@ -6,6 +6,7 @@ import {
   setTotalTracksCountAC,
   setChangePageSizeAC,
   setFilterByValueAC,
+  setReverseDataAC,
 } from "../redux/tracks-reducer";
 
 let mapStateToProps = (state) => {
@@ -22,8 +23,8 @@ let mapDispatchToProps = (dispatch) => {
     setTracks: (tracks) => {
       dispatch(setTracksAC(tracks));
     },
-    setCurrentPage: (pageNumber) => {
-      dispatch(setCurrentPageAC(pageNumber));
+    setCurrentPage: (currentPage) => {
+      dispatch(setCurrentPageAC(currentPage));
     },
     setTotalTracksCount: (totalTracksCount) => {
       dispatch(setTotalTracksCountAC(totalTracksCount));
@@ -33,6 +34,9 @@ let mapDispatchToProps = (dispatch) => {
     },
     setFilterByValue: (value) => {
       dispatch(setFilterByValueAC(value));
+    },
+    setReverseData: (tracks) => {
+      dispatch(setReverseDataAC(tracks));
     },
   };
 };

@@ -23,7 +23,9 @@
   cursor: pointer;
 }
 .sortby {
+  display: flex;
   margin: 6px 0px 0px 36px;
+  align-items: center;
 }
 .sortby span {
   padding: 0px 6px;
@@ -31,6 +33,13 @@
   font-weight: bold;
   color: goldenrod;
   cursor: pointer;
+}
+.sortby span:hover {
+  border: 1px solid gold;
+  color: gold;
+}
+.sortby p {
+  padding-right: 6px;
 }
 .control {
   display: flex;

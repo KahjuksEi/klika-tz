@@ -15,24 +15,33 @@ class Tracks extends React.Component {
       });
   }
 
-  onPageChanged = (pageNumber) => {
-    this.props.setCurrentPage(pageNumber);
+  onPageChanged = (currentPage) => {
+    this.props.setCurrentPage(currentPage);
     axios
       .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`
+        `https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${this.props.pageSize}`
       )
       .then((response) => {
         this.props.setTracks(response.data.items);
       });
   };
 
-  onPageSizeChanged = () => {
+  onPageSizeChanged = (showQuantity) => {
     axios
       .get(
-        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}`
+        `https://social-network.samuraijs.com/api/1.0/users?count=${showQuantity}`
       )
       .then((response) => {
         this.props.setTracks(response.data.items);
+      });
+  };
+
+  reverseData = () => {
+    axios
+      .get(`https://social-network.samuraijs.com/api/1.0/users`)
+      .then((response) => {
+        this.props.setTracks(response.data.items);
+        this.props.reverseData(response.data.items);
       });
   };
 
@@ -54,10 +63,34 @@ class Tracks extends React.Component {
       <div>
         <table cellspacing="2" border="1" cellpadding="5">
           <tr className={classes.titles}>
-            <td>User ID</td>
-            <td>Avatar</td>
-            <td>Name</td>
-            <td>URL</td>
+            <td
+              onClick={(e) => {
+                this.reverseData();
+              }}
+            >
+              User ID
+            </td>
+            <td
+              onClick={(e) => {
+                this.reverseData();
+              }}
+            >
+              Avatar
+            </td>
+            <td
+              onClick={(e) => {
+                this.reverseData();
+              }}
+            >
+              Name
+            </td>
+            <td
+              onClick={(e) => {
+                this.reverseData();
+              }}
+            >
+              URL
+            </td>
           </tr>
           {this.props.tracks.map((u) => (
             <tr key={u.id}>
@@ -89,6 +122,7 @@ class Tracks extends React.Component {
         </div>
 
         <div className={classes.sortby}>
+          <p>Показывать по:</p>
           <span
             onClick={(e) => {
               this.onPageSizeChanged(10);
